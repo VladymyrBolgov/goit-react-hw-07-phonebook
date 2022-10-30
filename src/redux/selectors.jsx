@@ -4,7 +4,7 @@ export const selectError = state => state.contacts.error;
 export const selectFilterValue = state => state.filter;
 
 export const selectContactsByName = state => {
-    console.log(state);
+   // console.log(state);
     const contacts = selectContacts(state);
     const filter = selectFilterValue(state);
     if (!filter) {
