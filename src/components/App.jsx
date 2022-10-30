@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from './Container.styled'
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
-import { Provider } from 'react-redux';
-import { store, persistor } from '../redux/store'
-import { PersistGate } from 'redux-persist/integration/react';
+import { useDispatch } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+  
     return (
       <>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
           <section >
             <Container >
               <h1>Phonebook</h1>
@@ -21,8 +24,6 @@ const App = () => {
               <ContactList />
             </Container>
             </section>
-            </PersistGate>
-        </Provider>
       </>
     );
   }
