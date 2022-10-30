@@ -11,8 +11,8 @@ const ContactForm = () => {
     number: '',
   };
 
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleOnSubmit = (values, { resetForm }) => {
     contacts.find(
