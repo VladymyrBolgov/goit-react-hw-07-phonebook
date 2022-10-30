@@ -1,31 +1,33 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
 import { Formik, Field } from 'formik';
 import {FormBox, FormLabel, FormInput, FormButton,} from './ContactForm.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 
 const ContactForm = () => {
-  const inputNameId = nanoid();
-  const inputTelId = nanoid();
-
   const initualValues = {
     name: '',
     number: '',
   };
+
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleOnSubmit = (values, { resetForm }) => {
-    dispatch(addContact(values));
+    contacts.find(
+      contact => values.name.toLowerCase() === contact.name.toLowerCase()
+    )
+    ? alert(`${values.name} is already in contacts.`)
+    : dispatch(addContact(values));
     resetForm();
   };
 
   return (
     <Formik initialValues={initualValues} onSubmit={handleOnSubmit}>
       <FormBox>
-        <FormLabel htmlFor={inputNameId}>Name</FormLabel>
+        <FormLabel >Name</FormLabel>
         <Field
-          id={inputNameId}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -33,9 +35,8 @@ const ContactForm = () => {
           as={FormInput}
           required
         />
-        <FormLabel htmlFor={inputTelId}>Number</FormLabel>
+        <FormLabel >Number</FormLabel>
         <Field
-          id={inputTelId}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -50,4 +51,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-

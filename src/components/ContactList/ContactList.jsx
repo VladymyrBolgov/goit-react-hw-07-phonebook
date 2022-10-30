@@ -4,14 +4,16 @@ import {
   ContactListBtn,
   ContactListText,
 } from './ContactList.styled';
-import { getContacts, getFilterValue } from 'redux/selectors';
+import { selectContacts, selectFilterValue, selectLoadingStatus } from 'redux/selectors';
 import { deleteContact } from 'redux/contactsSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import Loader from 'components/Loader'
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
-  const filter = useSelector(getFilterValue);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectLoadingStatus);
+  const filter = useSelector(selectFilterValue);
 
   const filterContactsOnChange = () => {
     if (!filter) {
@@ -28,10 +30,11 @@ const ContactList = () => {
 
   return (
     <ContactListBox>
-      {sortContactsByName().map(({ id, name, number }) => (
+      {isLoading && <Loader />}
+      {sortContactsByName().map(({ id, name, phone }) => (
         <ContactListItem key={id}>
           <ContactListText>Name: {name}</ContactListText>
-          <ContactListText>Number: {number}</ContactListText>
+          <ContactListText>Number: {phone}</ContactListText>
           <ContactListBtn
             type="button"
             onClick={() => {
