@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import {FormBox, FormLabel, FormInput, FormButton,} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 
 const ContactForm = () => {
