@@ -8,7 +8,7 @@ import { selectContacts } from 'redux/selectors';
 const ContactForm = () => {
   const initualValues = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   const contacts = useSelector(selectContacts);
