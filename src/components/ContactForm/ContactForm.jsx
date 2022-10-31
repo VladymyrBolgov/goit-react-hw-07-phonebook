@@ -8,12 +8,12 @@ import { selectContacts } from 'redux/selectors';
 const ContactForm = () => {
   const initualValues = {
     name: '',
-    number: '',
+    phone: '',
   };
 
-  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-
+  const dispatch = useDispatch();
+  
   const handleOnSubmit = (values, { resetForm }) => {
     contacts.find(
       contact => values.name.toLowerCase() === contact.name.toLowerCase()
