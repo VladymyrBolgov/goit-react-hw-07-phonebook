@@ -39,7 +39,7 @@ const ContactList = () => {
 export default ContactList;
 
 
-const [news, setNews] = useState([])
+// const [news, setNews] = useState([])
 
   // useEffect(() => {
   //   const fetchNews = async() = {
