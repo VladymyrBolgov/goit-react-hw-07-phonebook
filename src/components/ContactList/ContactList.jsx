@@ -1,3 +1,4 @@
+
 import {
   ContactListBox,
   ContactListItem,
@@ -36,3 +37,15 @@ const ContactList = () => {
 };
 
 export default ContactList;
+
+
+const [news, setNews] = useState([])
+
+  // useEffect(() => {
+  //   const fetchNews = async() = {
+  //     const data = await fetch(getNews);
+  //     console.log(data);
+  //     setNews(data);
+  //   }
+  //   fetchNews
+  // }, [];)

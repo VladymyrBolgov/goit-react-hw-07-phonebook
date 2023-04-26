@@ -19,4 +19,3 @@ export const selectContactsByName = state => {
             contact.name.toUpperCase().includes(filter.toUpperCase())
         );
 };
-

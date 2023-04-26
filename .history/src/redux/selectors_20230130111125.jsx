@@ -20,3 +20,12 @@ export const selectContactsByName = state => {
         );
 };
 
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { getNews } from 'services/apiService.js';
+
+// const dispatch = useDispatch();
+
+// useEffect(() => {
+//   dispatch(getNews())
+// }, [dispatch]);

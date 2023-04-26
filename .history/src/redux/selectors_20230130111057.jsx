@@ -20,3 +20,9 @@ export const selectContactsByName = state => {
         );
 };
 
+
+const dispatch = useDispatch();
+
+useEffect(() => {
+  dispatch(getNews())
+}, [dispatch]);
